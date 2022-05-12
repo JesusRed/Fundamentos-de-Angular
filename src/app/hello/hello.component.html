@@ -1,0 +1,23 @@
+<div class="ngiftest" *ngIf="namesList.length < 5">
+    <!-- <input type="text" [value]="inputName" (keyup)="updateInputName($event)"> -->
+    <input type="text" [(ngModel)]="inputName" />
+    <button (click)="addName()">Add name NGIF</button>
+</div>
+
+<br><br>
+
+<div [ngSwitch]="namesList.length < 5">
+    <div *ngSwitchCase="false ">
+        <p>NO MORE NAMES!</p>
+    </div>
+    <div *ngSwitchCase="true">
+        <input type="text" [(ngModel)]="inputName" />
+        <button (click)="addName()">Add name </button>
+    </div>
+</div>
+
+
+<p *ngFor="let item of namesList; index as i" (click)="onNameClick()">
+    <!-- {{ i + 1 }} - Hello {{ item | slice:0:1 | lowercase}}{{ item | slice:1 | uppercase}}! -->
+    {{i+1}} - Hi, {{ item | upperCapital}}!
+</p>
